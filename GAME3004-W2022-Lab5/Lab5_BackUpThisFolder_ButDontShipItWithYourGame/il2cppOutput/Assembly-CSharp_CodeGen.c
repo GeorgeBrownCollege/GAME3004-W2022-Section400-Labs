@@ -128,33 +128,45 @@ extern void EnemyController_Start_mD47FA99710AFEDA91637E73B4109FC0125032604 (voi
 extern void EnemyController_Update_mD4EAAD97042453D8F3F5D623882F24366451F7ED (void);
 // 0x0000003A System.Void EnemyController::.ctor()
 extern void EnemyController__ctor_m984FF7EBF9BF2923A09FA943862B8941E9FFECCD (void);
-// 0x0000003B System.Void MiniMapController::Start()
+// 0x0000003B System.Void GameSaveManager::SaveGame()
+extern void GameSaveManager_SaveGame_mB6E4602D5124C3D7B4A1ABFC3D5645EA48D3BD66 (void);
+// 0x0000003C System.Void GameSaveManager::LoadGame()
+extern void GameSaveManager_LoadGame_mA1DEEB24EA91A61774E425909024C694E4902192 (void);
+// 0x0000003D System.Void GameSaveManager::ResetData()
+extern void GameSaveManager_ResetData_m1B622CB8697448CF2896AF2944CE08109845FBA4 (void);
+// 0x0000003E System.Void GameSaveManager::OnSaveButton_Pressed()
+extern void GameSaveManager_OnSaveButton_Pressed_m7C788C3B470C4FE20AD7C8FDF543594B9BE3B238 (void);
+// 0x0000003F System.Void GameSaveManager::OnLoadButton_Pressed()
+extern void GameSaveManager_OnLoadButton_Pressed_m66AFA5DF156A6220E0BB3F7622696EDFEF72B6E8 (void);
+// 0x00000040 System.Void GameSaveManager::.ctor()
+extern void GameSaveManager__ctor_m7E389D6C8BA9E34762F4273FC567FB0E8339A648 (void);
+// 0x00000041 System.Void MiniMapController::Start()
 extern void MiniMapController_Start_mF5BABD25757BE106FC58E6D4146629C7905CB48C (void);
-// 0x0000003C System.Void MiniMapController::Update()
+// 0x00000042 System.Void MiniMapController::Update()
 extern void MiniMapController_Update_mD2D4592D32640D22B224AFF382E64F1360237A36 (void);
-// 0x0000003D System.Void MiniMapController::.ctor()
+// 0x00000043 System.Void MiniMapController::.ctor()
 extern void MiniMapController__ctor_m2B7BAFDDFCC195663E11C24AB8CCB6F95DE383D0 (void);
-// 0x0000003E System.Void PlayerBehaviour::Start()
+// 0x00000044 System.Void PlayerBehaviour::Start()
 extern void PlayerBehaviour_Start_mDE9C656A73EE807274C8D95E5822DF5B1700F4A4 (void);
-// 0x0000003F System.Void PlayerBehaviour::Update()
+// 0x00000045 System.Void PlayerBehaviour::Update()
 extern void PlayerBehaviour_Update_mDC3B340DFAA137F0A0C0338EA3FDE360E8A1A2C7 (void);
-// 0x00000040 System.Void PlayerBehaviour::OnDrawGizmos()
+// 0x00000046 System.Void PlayerBehaviour::OnDrawGizmos()
 extern void PlayerBehaviour_OnDrawGizmos_m993B169D782AA60B7069B637FDB3C288F6721FED (void);
-// 0x00000041 System.Void PlayerBehaviour::OnTriggerEnter(UnityEngine.Collider)
+// 0x00000047 System.Void PlayerBehaviour::OnTriggerEnter(UnityEngine.Collider)
 extern void PlayerBehaviour_OnTriggerEnter_m6B349B2B9312CAC66BE3D540F3D1407CA811C43C (void);
-// 0x00000042 System.Void PlayerBehaviour::OnJumpButton_Pressed()
+// 0x00000048 System.Void PlayerBehaviour::OnJumpButton_Pressed()
 extern void PlayerBehaviour_OnJumpButton_Pressed_m28F951106BCABC77FAD9439950502DF6E07C98AB (void);
-// 0x00000043 System.Void PlayerBehaviour::OnMapButton_Pressed()
+// 0x00000049 System.Void PlayerBehaviour::OnMapButton_Pressed()
 extern void PlayerBehaviour_OnMapButton_Pressed_m6D7C176717E43652ECC499BCB35FD430B685B316 (void);
-// 0x00000044 System.Void PlayerBehaviour::.ctor()
+// 0x0000004A System.Void PlayerBehaviour::.ctor()
 extern void PlayerBehaviour__ctor_m90D2257DB5FDA7F58DBC521A6DB0296E49E981A9 (void);
-// 0x00000045 System.Void UIController::OnHealthBarValue_Changed()
+// 0x0000004B System.Void UIController::OnHealthBarValue_Changed()
 extern void UIController_OnHealthBarValue_Changed_mB88A7501634C30ECE167E8CF6C3A1373A890A836 (void);
-// 0x00000046 System.Void UIController::TakeDamage(System.Int32)
+// 0x0000004C System.Void UIController::TakeDamage(System.Int32)
 extern void UIController_TakeDamage_m77F6F073B5325116156C509AF4D79EE96365CB65 (void);
-// 0x00000047 System.Void UIController::.ctor()
+// 0x0000004D System.Void UIController::.ctor()
 extern void UIController__ctor_mFF218DBC8CCEFE36AAC295D2376501658CD8B7A2 (void);
-static Il2CppMethodPointer s_methodPointers[71] = 
+static Il2CppMethodPointer s_methodPointers[77] = 
 {
 	JoystickPlayerExample_FixedUpdate_m9AEDBA111F95D67A006A5D3821956048224541B7,
 	JoystickPlayerExample__ctor_m702422E0AE29402330CF41FDDBEE76F0506342E2,
@@ -214,6 +226,12 @@ static Il2CppMethodPointer s_methodPointers[71] =
 	EnemyController_Start_mD47FA99710AFEDA91637E73B4109FC0125032604,
 	EnemyController_Update_mD4EAAD97042453D8F3F5D623882F24366451F7ED,
 	EnemyController__ctor_m984FF7EBF9BF2923A09FA943862B8941E9FFECCD,
+	GameSaveManager_SaveGame_mB6E4602D5124C3D7B4A1ABFC3D5645EA48D3BD66,
+	GameSaveManager_LoadGame_mA1DEEB24EA91A61774E425909024C694E4902192,
+	GameSaveManager_ResetData_m1B622CB8697448CF2896AF2944CE08109845FBA4,
+	GameSaveManager_OnSaveButton_Pressed_m7C788C3B470C4FE20AD7C8FDF543594B9BE3B238,
+	GameSaveManager_OnLoadButton_Pressed_m66AFA5DF156A6220E0BB3F7622696EDFEF72B6E8,
+	GameSaveManager__ctor_m7E389D6C8BA9E34762F4273FC567FB0E8339A648,
 	MiniMapController_Start_mF5BABD25757BE106FC58E6D4146629C7905CB48C,
 	MiniMapController_Update_mD2D4592D32640D22B224AFF382E64F1360237A36,
 	MiniMapController__ctor_m2B7BAFDDFCC195663E11C24AB8CCB6F95DE383D0,
@@ -228,7 +246,7 @@ static Il2CppMethodPointer s_methodPointers[71] =
 	UIController_TakeDamage_m77F6F073B5325116156C509AF4D79EE96365CB65,
 	UIController__ctor_mFF218DBC8CCEFE36AAC295D2376501658CD8B7A2,
 };
-static const int32_t s_InvokerIndices[71] = 
+static const int32_t s_InvokerIndices[77] = 
 {
 	3425,
 	3425,
@@ -294,6 +312,12 @@ static const int32_t s_InvokerIndices[71] =
 	3425,
 	3425,
 	3425,
+	3425,
+	3425,
+	3425,
+	3425,
+	3425,
+	3425,
 	2773,
 	3425,
 	3425,
@@ -306,7 +330,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	71,
+	77,
 	s_methodPointers,
 	0,
 	NULL,
