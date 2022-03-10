@@ -1,30 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 using UnityEngine;
+
+[System.Serializable]
+public class SaveData
+{
+    public float playerX;
+    public float playerY;
+    public float playerZ;
+}
 
 public class GameSaveManager : MonoBehaviour
 {
     public Transform player;
 
+    // Serialize Data
     void SaveGame()
     {
-        PlayerPrefs.SetFloat("PlayerXPosition", player.position.x);
-        PlayerPrefs.SetFloat("PlayerYPosition", player.position.y);
-        PlayerPrefs.SetFloat("PlayerZPosition", player.position.z);
-        PlayerPrefs.Save();
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/MySaveData.dat");
+        SaveData data = new SaveData();
+        data.playerX = player.position.x;
+        data.playerY = player.position.y;
+        data.playerZ = player.position.z;
+        bf.Serialize(file, data);
+        file.Close();
+        Debug.Log("Game data saved!");
     }
 
+    // Deserialize Data
     void LoadGame()
     {
-        if (PlayerPrefs.HasKey("PlayerXPosition"))
+        if (File.Exists(Application.persistentDataPath + "/MySaveData.dat"))
         {
-            var x = PlayerPrefs.GetFloat("PlayerXPosition");
-            var y = PlayerPrefs.GetFloat("PlayerYPosition");
-            var z = PlayerPrefs.GetFloat("PlayerZPosition");
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/MySaveData.dat", FileMode.Open);
+            SaveData data = (SaveData)bf.Deserialize(file);
+            file.Close();
+            var x = data.playerX;
+            var y = data.playerY;
+            var z = data.playerZ;
 
             player.gameObject.GetComponent<CharacterController>().enabled = false;
             player.position = new Vector3(x, y, z);
             player.gameObject.GetComponent<CharacterController>().enabled = true;
+            Debug.Log("Game data loaded!");
         }
         else
         {
@@ -34,7 +57,15 @@ public class GameSaveManager : MonoBehaviour
 
     void ResetData()
     {
-        PlayerPrefs.DeleteAll();
+        if (File.Exists(Application.persistentDataPath + "/MySaveData.dat"))
+        {
+            File.Delete(Application.persistentDataPath + "/MySaveData.dat");
+            Debug.Log("Data reset complete!");
+        }
+        else
+        {
+            Debug.LogError("No save data to delete.");
+        }
     }
 
     public void OnSaveButton_Pressed()
