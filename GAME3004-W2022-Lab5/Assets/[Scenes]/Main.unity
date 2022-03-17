@@ -4587,6 +4587,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: OnScreen Controls
       objectReference: {fileID: 0}
+    - target: {fileID: 8707330997255668175, guid: e9c9dd2d00cfef5498060444e6c4eaa3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8707330997536761040, guid: e9c9dd2d00cfef5498060444e6c4eaa3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
