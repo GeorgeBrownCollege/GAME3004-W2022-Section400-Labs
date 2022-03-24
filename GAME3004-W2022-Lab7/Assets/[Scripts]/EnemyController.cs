@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class EnemyController : MonoBehaviour
 {
     public Transform player;
 
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
 
     // Start is called before the first frame update
     void Start()
@@ -19,5 +20,6 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         agent.SetDestination(player.position);
+
     }
 }
