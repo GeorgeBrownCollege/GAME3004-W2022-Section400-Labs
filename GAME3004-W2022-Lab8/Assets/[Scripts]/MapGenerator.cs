@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
+    [Header("Player References")] 
+    public Transform player;
+    public Transform spawnPoint;
+
     [Header("World Properties")] 
     [Range(8, 64)]
     public int height = 8;
@@ -56,6 +60,9 @@ public class MapGenerator : MonoBehaviour
         Initialize();
         Reset();
         Regenerate();
+        //DisableCollidersAndMeshRenderers();
+        RemoveInternalTiles();
+        PositionPlayer();
     }
 
     private void Initialize()
@@ -94,6 +101,14 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
+    private void PositionPlayer()
+    {
+        player.gameObject.GetComponent<CharacterController>().enabled = false;
+        player.position = new Vector3(width * 0.5f, height + 5.0f, depth * 0.5f);
+        spawnPoint.position = player.position;
+        player.gameObject.GetComponent<CharacterController>().enabled = true;
+    }
+
     private void Reset()
     {
         foreach (var tile in grid)
@@ -102,4 +117,68 @@ public class MapGenerator : MonoBehaviour
         }
         grid.Clear();
     }
+
+    private void DisableCollidersAndMeshRenderers()
+    {
+        var normalArray = new Vector3[] {Vector3.up, Vector3.down, Vector3.right, Vector3.left, Vector3.forward, Vector3.back};
+        List<GameObject> disabledTiles = new List<GameObject>();
+
+
+        foreach (var tile in grid)
+        {
+            int collisionCounter = 0;
+            for (int i = 0; i < normalArray.Length; i++)
+            {
+                if (Physics.Raycast(tile.transform.position, normalArray[i], tile.transform.localScale.magnitude * 0.3f))
+                {
+                    collisionCounter++;
+                }
+            }
+
+            if (collisionCounter > 5)
+            {
+                disabledTiles.Add(tile);
+            }
+        }
+
+        foreach (var tile in disabledTiles)
+        {
+            var boxCollider = tile.GetComponent<BoxCollider>();
+            var meshRenderer = tile.GetComponent<MeshRenderer>();
+
+            boxCollider.enabled = false;
+            meshRenderer.enabled = false;
+        }
+    }
+
+    private void RemoveInternalTiles()
+    {
+        var normalArray = new Vector3[] { Vector3.up, Vector3.down, Vector3.right, Vector3.left, Vector3.forward, Vector3.back };
+        List<GameObject> tilesToBeRemoved = new List<GameObject>();
+
+
+        foreach (var tile in grid)
+        {
+            int collisionCounter = 0;
+            for (int i = 0; i < normalArray.Length; i++)
+            {
+                if (Physics.Raycast(tile.transform.position, normalArray[i], tile.transform.localScale.magnitude * 0.3f))
+                {
+                    collisionCounter++;
+                }
+            }
+
+            if (collisionCounter > 5)
+            {
+                tilesToBeRemoved.Add(tile);
+            }
+        }
+
+        foreach (var tile in tilesToBeRemoved)
+        {
+            grid.Remove(tile);
+            Destroy(tile.gameObject);
+        }
+    }
+
 }
